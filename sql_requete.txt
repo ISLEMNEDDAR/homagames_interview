@@ -1,0 +1,42 @@
+A
+select goals_id from GOALS where beauty < 0.9 AND beauty > 0.1
+
+select Distinct player_id
+from PLAYER as p
+Inner JOIN GOALS as g ON g.player_id = p.player_id as pg
+where pg.team = "FCB"
+
+select player_id
+from (select player_id from PLAYER as p where team = FCB and market_value < 8.0) as pp
+inner JOIN GOALS as g ON g.player_id = pp.player_id
+group by pg.player_id
+having count(pg.player_id) >= 10
+
+didn't understand the request
+
+select avg(pg.beauty)
+from PLAYER as p
+inner JOIN Goals as g
+on p.player_id = g.player_id as pg
+where pg.team = psg
+
+
+
+B
+i didn't understood the question because do you want to have
+the couple (player_id, goalid) where the player_is is not
+redundant so we have to use Distinct near player_id declaration
+so we can have only 1 occuenrence of playerId
+
+select B.goals_id, Distinct A.player_id
+from PLAYERS as A, GOALS as B
+where A.player_id = B.player_id
+
+C
+select Count(*), team
+from PLayers as p
+left join Goals as g
+on p.player_id = g.player_id
+where g.player_id IS NULL
+group by team
+
